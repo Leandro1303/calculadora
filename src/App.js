@@ -11,7 +11,11 @@ function App() {
   const [input, setInput] = useState('');
 
   const agregarInput = val => {
-    setInput(input + val);
+    if (/[+\-*/]$/.test(input) && /[+\-*/]/.test(val)) {
+      setInput(input.slice(0, -1) + val);
+    } else {
+      setInput(input + val);
+    }
   };
 
   const calcularResultado = () => {
